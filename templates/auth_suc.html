@@ -1,0 +1,13 @@
+<div>
+    {{usr}}
+    <input id="d" style="display: none;" value={{data}}>
+    <input id="d1" style="display: none;" value={{dt}}>
+    <input id="d2" style="display: none;" value={{usr}}>
+    <script>
+        localStorage.setItem('nickname', document.getElementById('d').value)
+        localStorage.setItem('id', document.getElementById('d1').value)
+        localStorage.setItem('for', document.getElementById('d2').value)
+        alert("Вы авторизировались")
+        window.location.href='/'
+    </script>
+</div>

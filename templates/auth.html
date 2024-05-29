@@ -1,0 +1,16 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="static/styles.css">    
+</head>
+{% include 'PA.html' %}
+<div class="element"></div>
+<div id="reg">
+    <form method="post" action="auth" style="display: flex; flex-direction: column; gap: 0.3vw;">
+        {% csrf_token %}
+        <label for="mail">E-mail</label>
+        <input name="mail" type="email" required/>
+        <label for="password">Пароль</label>
+        <input name="password" type="password" required/>
+        <input id="s" type="submit" value="Войти"/>
+    </form>
+</div>

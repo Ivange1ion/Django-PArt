@@ -1,0 +1,57 @@
+<style>
+    @font-face {
+        font-family: "KyivType serif";
+        src: local('KyivType Serif'), local('KyivType-Serif'),
+        url('KyivTypeSerif-VarGX.ttf') format('woff2');
+    }
+    @font-face {
+        font-family: "Press Start 2P";
+        src: local('PressStart2P'),
+        url('PressStart2P-Regular.ttf') format('woff2');
+    }
+    #RA{
+        position: absolute;
+        width: 100%;
+        display: flex;
+        /* left: 35vw; */
+        z-index: 1000;
+        height: 3em;
+        justify-content: space-around;
+    }
+    #RA button{
+        flex-basis: 20vw;
+        font-size: 120%;
+        font-family: "Press Start 2P";
+        background-color: rgba(255, 229, 0, 1);
+        border-color: rgba(186, 167, 0, 1);
+        outline: solid 0.1vw black; 
+    }
+    #reg{
+        position: relative;
+        z-index: 200;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        width: 30vw;
+        height: 60%;
+        font-family: 'KyivType serif';
+        font-size: 130%;
+        border-radius: 13%;
+        background-color: rgba(255, 203, 0, 1);
+        transform: translate(38vw, 20vh);
+    }
+    #reg label::after{
+        content: none;
+    }
+    #s{
+        font-family: 'KyivType serif';
+    }
+    #reg input{
+        width: 20vw;
+    }
+</style>
+<p id="RA">
+    <button onclick="window.location.href='/'">На главную</button>
+    <button onclick="window.location.href='/auth'">Вход</button>
+    <button onclick="window.location.href='sign_in'">Регистрация</button>
+</p>

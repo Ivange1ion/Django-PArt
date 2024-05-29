@@ -1,0 +1,100 @@
+{% load static %}
+<div id="menu1">
+    <style>
+    /* Стиль для иконки меню */
+    .menu-icon {
+    position: absolute;
+    width: 3vw;
+    height: 2.7vw;
+    margin-left: -3vw;
+    background-image: url('{% static "menu.png" %}'); /* Здесь можно поменять изображение иконки */
+    background-size: 3vw;
+    cursor: pointer;
+    }
+    .menu-icon::after{
+        content: "";
+    }
+    /* Стиль для чекбокса, который будет скрыт */
+    .menu-checkbox {
+    display: none;
+    }
+    
+    /* Стиль для меню, которое будет скрыто по умолчанию */
+    .menu {
+    display: none;
+    position: absolute;
+    top: 3vw; /*Здесь можно поменять положение меню по вертикали*/
+    left: -13vw; /* Здесь можно поменять положение меню по горизонтали */
+    width: 15vw; /* Здесь можно поменять ширину меню */
+    background-color: rgba(255, 203, 0, 1); /* Здесь можно поменять цвет фона меню */
+    border: 1px solid black; /* Здесь можно поменять цвет и толщину рамки меню */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 3;
+    }
+    
+    /* Стиль для ссылок в меню */
+    .menu-item {
+    display: block;
+    padding: 0.4vw; /* Здесь можно поменять отступы ссылок */
+    text-decoration: none;
+    color: rgba(250, 1, 255, 1); /* Здесь можно поменять цвет текста ссылок */
+    font-size: 1.5vw; /* Здесь можно поменять размер шрифта ссылок */
+    font-weight: bold;
+    }
+    
+    /* Стиль для разделителей между ссылками */
+    .menu-divider {
+    height: 1px;
+    background-color: black; /* Здесь можно поменять цвет разделителей */
+    margin: 0;
+    }
+    
+    /* Стиль для меню, когда чекбокс отмечен */
+    .menu-checkbox:checked ~ .menu {
+    display: block;
+    }
+    </style>
+    
+    <!-- <!— Чекбокс, который будет контролировать отображение меню —> -->
+    <input type="checkbox" id="menu-checkbox" class="menu-checkbox">
+    
+    <!-- <!— Иконка меню, которая будет переключать чекбокс —> -->
+    <label for="menu-checkbox" class="menu-icon"></label>
+    
+    <!-- <!— Меню, которое будет содержать ссылки —> -->
+    <ul class="menu">
+        <!-- <!— Первая ссылка —> -->
+        <li><a href="/" class="menu-item">Главная</a></li>
+        <!-- <!— Разделитель —> -->
+        <li class="menu-divider"></li>
+        <!-- <!— Вторая ссылка —> -->
+        <li><a href="/about" class="menu-item">О нас</a></li>
+        <!-- <!— Разделитель —> -->
+        <li class="menu-divider"></li>
+        <!-- <!— Третья ссылка —> -->
+        <li><a href="/arts" class="menu-item">Коллекция</a></li>
+        <!-- <!— Разделитель —> -->
+        <li class="menu-divider"></li>
+        <!-- <!— Четвёртая ссылка —> -->
+        <li id="que">
+            <!-- <a href="/sign_in" class="menu-item">Регистрация</a> -->
+        </li>
+        <!-- <!— Разделитель —> -->
+        <li class="menu-divider"></li>
+        <!-- <!— Пятая ссылка —> -->
+        <li><a href="/support" class="menu-item">Поддержка</a></li>
+        </ul>
+    </div>
+    <script>
+        let nick=localStorage.getItem('nickname')
+        let id=localStorage.getItem('id')
+        if (localStorage.length>=1) {
+            //   <a href="/sign_in" class="menu-item">Регистрация</a>
+            document.getElementById('que').innerHTML=('<a href="/logout" class="menu-item">Logout</a>')
+        }else if (localStorage.length==0)
+        {
+            document.getElementById('que').innerHTML=('<a href="/sign_in" class="menu-item">Регистрация/Вход</a>')
+        }
+    </script>

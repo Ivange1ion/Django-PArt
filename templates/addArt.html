@@ -1,0 +1,85 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="static/styles.css">    
+</head>
+<style>
+    @font-face {
+        font-family: "KyivType serif";
+        src: local('KyivType Serif'), local('KyivType-Serif'),
+        url('KyivTypeSerif-VarGX.ttf') format('woff2');
+    }
+    @font-face {
+        font-family: "Press Start 2P";
+        src: local('PressStart2P'),
+        url('PressStart2P-Regular.ttf') format('woff2');
+    }
+    .element {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        /* min-width: 800px; */
+        /* max-width: 900px; */
+        background-image: url('/static/pattern.svg');
+        background-size: 7%;
+        background-attachment: scroll;
+    }
+    #reg{
+        position: relative;
+        z-index: 200;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        width: 30vw;
+        height: 60%;
+        font-family: 'KyivType serif';
+        font-size: 130%;
+        border-radius: 13%;
+        background-color: rgba(255, 203, 0, 1);
+        transform: translate(38vw, 20vh);
+    }
+    label::after{
+        content: none;
+    }
+    #reg input{
+        width: 20vw;
+    }
+    #s{
+        font-family: 'KyivType serif';
+    }
+</style>
+<div class="element"></div>
+<div id="reg" style='
+    justify-content: center;
+    display: flex;
+    '>
+    <form method="post" action="addArt" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 0.3vw;">
+        {% csrf_token %}
+        <label for="artname">Название</label>
+        <input name="artname" required/>
+
+        <label for="art">Рисунок</label>
+        <input name="art" type="file" />
+
+        <label for="tag1">Первый тег</label>
+        <input name="tag1" type="text" />
+        <label for="tag2">Второй тег</label>
+        <input name="tag2" type="text" />
+        <label for="tag3">Третий тег</label>
+        <input name="tag3" type="text"/>
+        <label for="tag4">Четвёртый тег</label>
+        <input name="tag4" type="text"/>
+        <label for="tag5">Пятый тег</label>
+        <input name="tag5" type="text" />
+        <input type="text" style="display: none;" id="author" name="author">
+        <!-- <input type="text" id="author1" name="author1"> -->
+        <input type="submit" id="s" value="Опубликовать рисунок"/>
+    </form>
+</div>
+<script>
+    let author=localStorage.getItem('id')
+    // alert(author)
+    document.getElementById('author').value=(author)
+    let author1=localStorage.getItem('for')
+    // alert(author)
+    document.getElementById('author1').value=(`User object (${author})`)
+</script>
